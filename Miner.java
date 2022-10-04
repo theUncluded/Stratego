@@ -2,8 +2,8 @@ package application;
 
 import java.io.Serializable;
 
-public class Colonel extends Piece implements Serializable {
-
+public class Miner extends Piece implements Serializable {
+	
 	/**
 	 * The constructor takes in parameters for the Piece that may change throughout the course of the game
 	 * @param team - the color of the Piece's team
@@ -11,23 +11,23 @@ public class Colonel extends Piece implements Serializable {
 	 * @param y - the column of the Piece in the Board
 	 * @param isRevealed - if the Piece is revealed or not
 	 */
-	public Colonel(String team, int x, int y, boolean isRevealed) {
-		super(team, 8, x, y, isRevealed, true, false, false);
+	public Miner(String team, int x, int y, boolean isRevealed) {
+		super(team, 3, x, y, isRevealed, true, false, false);
 	}
-	
+
 	/**
 	 * The attack method returns an integer based on the result of the attack
-	 * Return a 1 if the Colonel's rank is greater than the enemy Piece
-	 * Return a 0 if the Colonel attacks another Colonel or a Bomb
-	 * Return a -1 if the Colonel loses the attack
+	 * Return a 1 if the Miner's rank is greater than the enemy Piece or if the Piece is a Bomb
+	 * Return a 0 if the Miner attacks another Miner
+	 * Return a -1 if the Miner loses the attack
 	 */
 	public int attack(Piece enemyPiece) {
 		enemyPiece.setRevealed(true);
 		this.setRevealed(true);
-		if (rank > enemyPiece.getRank()) {
+		if(enemyPiece.isBomb() || rank > enemyPiece.getRank()) {
 			return 1;
 		}
-		else if (rank == enemyPiece.getRank() || enemyPiece.isBomb()) {
+		else if(rank == enemyPiece.getRank()) {
 			return 0;
 		}
 		else {
@@ -39,7 +39,7 @@ public class Colonel extends Piece implements Serializable {
 	 * Returns the name of the Piece and the Piece's rank
 	 */
 	public String pieceType() {
-		return "Colonel (Rank 8) ";
+		return "Miner (Rank 3) ";
 	}
 
 }

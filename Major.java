@@ -2,7 +2,7 @@ package application;
 
 import java.io.Serializable;
 
-public class Colonel extends Piece implements Serializable {
+public class Major extends Piece implements Serializable {
 
 	/**
 	 * The constructor takes in parameters for the Piece that may change throughout the course of the game
@@ -11,15 +11,15 @@ public class Colonel extends Piece implements Serializable {
 	 * @param y - the column of the Piece in the Board
 	 * @param isRevealed - if the Piece is revealed or not
 	 */
-	public Colonel(String team, int x, int y, boolean isRevealed) {
-		super(team, 8, x, y, isRevealed, true, false, false);
+	public Major(String team, int x, int y, boolean isRevealed) {
+		super(team, 7, x, y, isRevealed, true, false, false);
 	}
 	
 	/**
 	 * The attack method returns an integer based on the result of the attack
-	 * Return a 1 if the Colonel's rank is greater than the enemy Piece
-	 * Return a 0 if the Colonel attacks another Colonel or a Bomb
-	 * Return a -1 if the Colonel loses the attack
+	 * Return a 1 if the Spy attacks a Marshall first, the Spy wins the attack
+	 * Return a 0 if the Spy attacks another Spy or a Bomb
+	 * Return a -1 if the Spy loses the attack
 	 */
 	public int attack(Piece enemyPiece) {
 		enemyPiece.setRevealed(true);
@@ -39,7 +39,7 @@ public class Colonel extends Piece implements Serializable {
 	 * Returns the name of the Piece and the Piece's rank
 	 */
 	public String pieceType() {
-		return "Colonel (Rank 8) ";
+		return "Major (Rank 7) ";
 	}
 
 }
